@@ -1,0 +1,65 @@
+Generacion del proyecto
+
+1- Crear directorio del backend
+2- Dentro de esta carpeta 
+        npm init --> despues se puede modificar en el package.json
+
+3- Descargar servidor de expressjs.com 
+
+        npm install express --save  
+            (Ese save nos dice que esa libreria es necesaria para que funcione nuestro proyecto)
+            Crea node_modules y packages-lock.json
+
+4- Crear archivo app.js en raiz --> inicializa nuestro programa
+
+        var express = require('express'); //Cargar librerias
+        var app = express(); //Inicializar servidor
+        app.listen(3000,()=>{//conectado}); //poner servidor a escuchar
+
+5- Ejecutar node app  --> ejecuta el programa pero cuando hago un cambio debo reiniciar el servidor
+
+6- Crear primera Ruta
+
+        en app.js agrego
+            app.get('/', (req,res,next)=>{
+                res.status(200).json({
+                    ok: true,
+                    mensaje: 'Todo Ok'
+                })
+            });
+
+7- Uso de nodemon
+    Para evitar reiniciar el servidor con cada cambio, instalo nodemon
+    Instalar libreria nodemon
+    github.com/remy/nodemon
+
+    npm install -g nodemon en forma global
+        o
+    npm install --save-dev nodemon solo para este proyecto
+
+    en package.json --> scripts --> "start": "nodemon app.js"
+
+    y a partir de ahora inicio el programa con 
+        npm start
+
+8- Instalar MongoDB y libreria mongoose para manejar mongo desde node
+    para iniciar mongo --> sudo systemctl start mongod
+
+    npm install mongoose --save
+
+
+9- Conexion entre mongo y node
+    ver mongoosejs.com 
+
+        var mongoose = require('mongoose');
+        mongoose.connection.openUri('mongodb://localhost:27017/myBD', 
+         (err.res)=>{
+             if(err) throw err;
+             console.log("Conectado");
+         });
+10- Login de usuarios
+    Creación de un JWT
+        Buscar jsonwebtoken --> github.com/node-jsonwebtoken 
+
+        npm install jsonwebtoken --save
+        

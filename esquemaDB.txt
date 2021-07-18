@@ -1,0 +1,35 @@
+Esquema general de las Colecciones en BD hospitalDB
+
+
+USUARIOS
+
+Nombre: String obligatorio
+Email: String obligatorio y unico
+Password: String obligatorio - encriptado 
+Img : String opcional
+Role: String obligatorio con valor por defecto
+Google: Boolean opcional para ver si el usuario fue creado por Google
+
+MEDICOS
+
+Nombre: String obligatorio
+Img : String opcional
+Usuario: Referencia al usuario - obligatorio
+Hospital: Referencia a Hospital obligatorio
+
+HOSPITALES
+
+Nombre: String obligatorio
+Img : String opcional
+Usuario: Referencia al usuario - obligatorio
+
+SERVICIOS
+
+CRUD - de cada collection
+Buscador general e independiente
+Carga de imagenes y archivos
+Paginaciones
+Bloqueo de imagenes
+Generador de tokens
+Verificacion de tokens
+Validar el token de Google - Backend

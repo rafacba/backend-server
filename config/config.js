@@ -1,0 +1,1 @@
+module.exports.SEED = 'este-es-un-seed-dificil'; // clave para generar y recuperar un token
