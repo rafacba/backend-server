@@ -63,3 +63,8 @@ Generacion del proyecto
 
         npm install jsonwebtoken --save
         
+
+11- Para trabajar con subida de archivos o imagenes utilizo express-fileupload
+    github.com/richardgirges/express-fileupload
+            npm i express-fileupload --save
+    

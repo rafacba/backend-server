@@ -17,7 +17,13 @@ var mdAutenticacion = require('../middlewares/autenticacion');
 
 app.get('/', (req, res, next) => {
 
+    var desde = req.query.desde || 0; //Si viene un parametro lo uso sino uso cero
+
+    desde = Number(desde);
+
     Usuario.find({}, 'nombre email img role') //No quiero que me traiga el password para mostrar
+        .skip(desde)
+        .limit(5)
         .exec(
             (err, usuarios) => {
 
@@ -28,10 +34,14 @@ app.get('/', (req, res, next) => {
                         errors: err
                     });
                 }
-                res.status(200).json({
-                    ok: true,
-                    usuarios: usuarios
+                Usuario.count({}, (err, conteo) => {
+                    res.status(200).json({
+                        ok: true,
+                        total: conteo,
+                        usuarios: usuarios
+                    });
                 });
+
 
             });
 
