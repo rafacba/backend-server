@@ -68,3 +68,23 @@ Generacion del proyecto
     github.com/richardgirges/express-fileupload
             npm i express-fileupload --save
     
+12- Google - Implementar Google Signin en el backend-server
+        ir -> developers.google.com/identity/sign-in/web/devconsole-project
+
+
+        1- Go to the Credentials page.
+            Crear proyecto --> google-signin
+        2- Click Create credentials > OAuth client ID.
+            Configurar pantalla de consentimiento
+        3- Select the Web application application type.
+        4- Name your OAuth 2.0 client and click Create
+
+        5- Origenes Autorizados de JS 
+            http://localhost:3000
+            http://localhost:4200
+
+13- Documentacion automatica generada por Postman
+        sobre la coleccion --> ... view Documentation
+        --> publish 
+        https://documenter.getpostman.com/view/8466103/TzsfoRHd
+            
