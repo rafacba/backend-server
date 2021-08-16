@@ -87,4 +87,16 @@ Generacion del proyecto
         sobre la coleccion --> ... view Documentation
         --> publish 
         https://documenter.getpostman.com/view/8466103/TzsfoRHd
-            
+
+14- Trabajar con el CORS
+
+    - buscar en Google express cors =>    http://expressjs.com/en/resources/middleware/cors.html
+    y ver de instalarlo y ver ejemplos para aplicar
+
+    - otra opcion => enable-cors.org/server.html
+        copio app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+        en => app.js

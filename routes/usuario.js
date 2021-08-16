@@ -21,7 +21,7 @@ app.get('/', (req, res, next) => {
 
     desde = Number(desde);
 
-    Usuario.find({}, 'nombre email img role') //No quiero que me traiga el password para mostrar
+    Usuario.find({}, 'nombre email img role google') //No quiero que me traiga el password para mostrar
         .skip(desde)
         .limit(5)
         .exec(
@@ -76,7 +76,7 @@ app.get('/', (req, res, next) => {
 
 //como segundo parametro mando las validaciones --> si es una sola
 // pongo  ej mdAut.verificar y sii son varias las pongo entre [mdAut.verif1,mdAut.verif2]
-app.post('/', mdAutenticacion.verificaToken, (req, res) => {
+app.post('/', (req, res) => {
     var body = req.body;
 
     var usuario = new Usuario({
