@@ -69,7 +69,8 @@ app.post('/google', async(req, res) => {
                     ok: true,
                     usuario: usuarioDB,
                     id: usuarioDB._id,
-                    token: token
+                    token: token,
+                    menu: obtenerMenu(usuarioDB.role)
                 });
             }
         } else {
@@ -88,7 +89,8 @@ app.post('/google', async(req, res) => {
                     ok: true,
                     usuario: usuarioDB,
                     id: usuarioDB._id,
-                    token: token
+                    token: token,
+                    menu: obtenerMenu(usuarioDB.role)
                 });
             });
 
@@ -144,11 +146,45 @@ app.post('/', (req, res, next) => {
             ok: true,
             usuario: usuarioDB,
             id: usuarioDB._id,
-            token: token
+            token: token,
+            menu: obtenerMenu(usuarioDB.role)
         });
     });
 
 });
+
+// ======================================================
+// Obtener menu - Lo podria hacer en la base de datos tambien
+// ======================================================
+function obtenerMenu(ROLE) {
+    var menu = [{
+            titulo: 'Principal',
+            icono: 'mdi mdi-gauge',
+            submenu: [
+                { titulo: 'Dashboard', url: '/dashboard' },
+                { titulo: 'ProgressBar', url: '/progress' },
+                { titulo: 'Gráficas', url: '/graficas1' },
+                { titulo: 'Promesas', url: '/promesas' },
+                { titulo: 'Rxjs', url: '/rxjs' }
+            ]
+        },
+        {
+            titulo: 'Mantenimiento',
+            icono: 'mdi mdi-folder-lock-open',
+            submenu: [
+                //{ titulo: 'Usuarios', url: '/usuarios' },
+                { titulo: 'Hospitales', url: '/hospitales' },
+                { titulo: 'Medicos', url: '/medicos' }
+            ]
+        }
+    ];
+    // console.log('ROLE: ', ROLE);
+    if (ROLE === 'ADMIN_ROLE') {
+        // Con push lo pongo al final con unshift lo pongo al ppio
+        menu[1].submenu.unshift({ titulo: 'Usuarios', url: '/usuarios' })
+    }
+    return menu;
+}
 
 
 module.exports = app;

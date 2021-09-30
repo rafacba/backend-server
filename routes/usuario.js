@@ -34,7 +34,7 @@ app.get('/', (req, res, next) => {
                         errors: err
                     });
                 }
-                Usuario.count({}, (err, conteo) => {
+                Usuario.countDocuments({}, (err, conteo) => {
                     res.status(200).json({
                         ok: true,
                         total: conteo,
@@ -107,7 +107,7 @@ app.post('/', (req, res) => {
 // ======================================================
 // Actualizar Usuario
 // ======================================================
-app.put('/:id', mdAutenticacion.verificaToken, (req, res, next) => {
+app.put('/:id', [mdAutenticacion.verificaToken, mdAutenticacion.verificaADMIN_o_MismoUsuario], (req, res, next) => {
     var id = req.params.id;
     var body = req.body;
 
@@ -156,7 +156,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res, next) => {
 // ======================================================
 // Borrar un usuario por id
 // ======================================================
-app.delete('/:id', mdAutenticacion.verificaToken, (req, res, next) => {
+app.delete('/:id', [mdAutenticacion.verificaToken, mdAutenticacion.verificaADMIN_ROLE], (req, res, next) => {
     var id = req.params.id;
 
     Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
